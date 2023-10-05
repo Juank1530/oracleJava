@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class ArrayTester {
 
@@ -27,18 +28,24 @@ public class ArrayTester {
 		}
 		
 		
-		String[][] test = new String[1][5];	
+		int[][] test = new int[2][5];	
 		Scanner in = new Scanner(System.in);
+		int total = 0;
+		float avegare = 0; 
 		
 		for (int i = 0; i < test.length; i++) {
 			for (int j = 0; j < test[i].length; j++) {
-				
+				System.out.println("Enter the note");
 				String note = in.next();
-				float noteFloat = Float.parseFloat(note);
-				test [i] [j] = noteFloat;
+				int noteInt = Integer.parseInt(note);
+				test [i] [j] = noteInt;
+				total += test[i][j];
+				avegare = (float) total/test[i].length;
 			}
-			
+			System.out.println(total);
+			System.out.println(avegare);
 		}
+		
 		
 		
 		
