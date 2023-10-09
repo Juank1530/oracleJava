@@ -17,7 +17,6 @@ public class Arraytester2 {
 				array [i] [j] = value;
 			}
 		}
-		in.close();
 		return array;
 	}
 	
@@ -53,7 +52,6 @@ public class Arraytester2 {
 	public static void main(String[] args) {		
 		
 		Arraytester2 object1 = new Arraytester2();
-		Arraytester2 object2 = new Arraytester2();
 		Scanner in = new Scanner(System.in);
 		String option;
 		
@@ -67,8 +65,7 @@ public class Arraytester2 {
 					+ "e. Display A * B\r\n"
 					+ "f. Exit");
 			option = in.nextLine();
-			in.nextLine();
-			in.close();
+			
 			
 			switch (option) {
 			case "a":
@@ -84,7 +81,7 @@ public class Arraytester2 {
 				object1.substration(object1.array1, object1.array2);
 				break;
 			case "e":
-				object1.multiplication(object1.array1, object2.array1);
+				object1.multiplication(object1.array1, object1.array2);
 				break;
 			case "f":
 				System.out.println("THX!!");
@@ -93,11 +90,9 @@ public class Arraytester2 {
 				System.out.println("Invalid symbol :( try again.");
 				break;
 			}
-			
 		} while (!option.equals("f"));
-		
-		
-		
+
+		in.close();		
 
 	}
 }
