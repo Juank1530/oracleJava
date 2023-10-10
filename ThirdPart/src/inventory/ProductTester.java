@@ -12,61 +12,48 @@ public class ProductTester {
 		double temPrice;
 		int temQuantity;
 		String temId;
-		
-		System.out.println("Please enter the product name: ");
-		temName = in.next();
-		System.out.println("Please enter the product price: ");
-		temPrice = in.nextDouble();
-		System.out.println("Please enter the product quantity: ");
-		temQuantity = in.nextInt();
-		System.out.println("Please enter the product ID: ");
-		temId = in.next();	
-		Product prod = new Product(temName, temPrice, temQuantity, temId); 
-		
-		in.nextLine();
-		
-		System.out.println("Please enter the product name: ");
-		temName = in.next();
-		System.out.println("Please enter the product price: ");
-		temPrice = in.nextDouble();
-		System.out.println("Please enter the product quantity: ");
-		temQuantity = in.nextInt();
-		System.out.println("Please enter the product ID: ");
-		temId = in.next();	
-		Product prod7 = new Product(temName, temPrice, temQuantity, temId); 
-		
-		in.close();
-		
-		
-		
-		Product prod1 = new Product();
-		prod1.setId("JK001");
-		prod1.setName("Printer");
-		prod1.setPrice(450000);
-		prod1.setQuantity(6);
-		Product prod2 = new Product();
-		prod2.setId("JK002");
-		prod2.setName("Headset");
-		prod2.setPrice(500000);
-		prod2.setQuantity(10);
-		Product prod3 = new Product("CPU", 85000, 45, "JK003");
-		Product prod4 = new Product("Display", 350000, 12, "JK004");
-		Product prod5 = new Product("Mouse", 20000, 25, "JK005");
-		Product prod6 = new Product("Keyboard", 25000, 65, "JK006");
-		prod6.setActive(false);
-		
-		System.out.println(prod1.toString());
-		System.out.println(prod2.toString());
-		System.out.println(prod3.toString());
-		System.out.println(prod4.toString()); 
-		System.out.println(prod5.toString());
-		System.out.println(prod6.toString());
-		
-		
-		
-		
-		
-		
-	}
+		int maxSize = -89;
+				
+		do {
+			try {
+				System.out.println("Enter the number of products you would like to add \n"
+						+ "Enter 0 (zero) if you do not wish to add products");
+				maxSize = in.nextInt();
+				if (maxSize == 0) {
+					System.out.println("It is not necessary to add products");
+				}else if(maxSize > 0) {
+					Product[] products = new Product[maxSize];
+					
+					for (int i = 0; i < products.length; i++) {
+						in.nextLine();
+						System.out.println("Please enter the product name: ");
+						temName = in.next();
+						System.out.println("Please enter the product price: ");
+						temPrice = in.nextDouble();
+						System.out.println("Please enter the product quantity: ");
+						temQuantity = in.nextInt();
+						System.out.println("Please enter the product ID: ");
+						temId = in.next();	
+						products[i] = new Product(temName, temPrice, temQuantity, temId);
+					}
+					
+					// Here I can see the products into the array 
+					for (Product product : products) {
+						System.out.println(product + "\n");
+					}
+				}else {
+					System.out.println("You have entered an invalid value :(");
+				}
+			} catch (Exception e) {
+				System.err.println("Please only enter positive numbers");
+				// Clean the buffer 
+				in.nextLine();
 
+			}
+					
+		} while (maxSize < 0);
+		
+		//Close Scanner 
+		in.close();
+	}
 }
