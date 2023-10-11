@@ -15,6 +15,7 @@ public class Card {
 		return "The " + name + " of " + suit;
 	}
 	
+	
 	public String getName(int i){
 		if(i == 1) return "Ace";
 		if(i == 2) return "Two";
@@ -31,6 +32,7 @@ public class Card {
 		if(i == 13) return "King";
 		return "error";
 	}
+	
 	public int getPoints(String n){
 		if(n == "Jack" ||n == "Queen" ||n == "King"||n == "Ten")
 		return 10;
