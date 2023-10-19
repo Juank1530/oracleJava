@@ -1,5 +1,6 @@
 package inventory;
 
+import java.util.Scanner;
 
 public class Product {
 	
@@ -17,6 +18,36 @@ public class Product {
 		this.id = id;
 	}
 	
+	public int addToInventory(int quantity){
+		Scanner in = new Scanner(System.in);
+		System.out.println("Please enter the quantity of products that you want to add: ");
+		quantity = in.nextInt();
+		if (quantity > 1) {
+			quantity = this.quantity + quantity;
+		}else {
+			System.out.println("Sorry you can't add negativa values :(");
+		}
+		in.close();
+		return quantity;
+	}
+	
+	public int deductFromInventory(int quantity){
+		Scanner in = new Scanner(System.in);
+		System.out.println("Please enter the quantity of products that you want to deduct: ");
+		quantity = in.nextInt();
+		if (quantity > 1) {
+			quantity = this.quantity - quantity;
+		}else {
+			System.out.println("Sorry you can't add negativa values :(");
+		}
+		in.close();
+		return quantity;
+	}
+	
+	public double inventoryValue() {
+		return getQuantity()*getPrice();
+	}
+
 	public String toString(){
 		String s1 = "";
 		String active = (isActive() == true) ? "Active":"In Active"; 
@@ -29,12 +60,6 @@ public class Product {
 		  +  "Product Status: " + active + "\n";	 
 		return s1;
 	}
-	
-	public double inventoryValue() {
-		return getQuantity()*getPrice();
-	}
-	
-
 	
 	public boolean isActive() {
 		return active;
