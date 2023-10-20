@@ -5,7 +5,6 @@ public class ProductTester {
 
 	public static void main(String[] args) {
 		
-		
 		Scanner in = new Scanner(System.in);
 		
 		int maxSize = -1;
@@ -114,10 +113,45 @@ public class ProductTester {
 				in.nextLine();
 			}
 		} while (option < 0 || option > 4);
-		in.close();
 		return option;
 	}
 	
+	public static int getProductNumber(Product[] products, Scanner scanner) {
+        int productChoice = -1;
+
+        for (int i = 0; i < products.length; i++) {
+            System.out.println("Index: " + i + " - Product Name: " + products[i].getName());
+        }
+
+        do {
+            System.out.print("please select a product: (0-" + (products.length - 1) + "): ");
+            if (scanner.hasNextInt()) {
+                productChoice = scanner.nextInt();
+                if (productChoice < 0 || productChoice >= products.length) {
+                    System.out.println("Select a valid value.");
+                }
+            } else {
+                System.out.println("Invalid value. It muss be a integer number.");
+                scanner.next(); // Limpiar la entrada incorrecta
+            }
+        } while (productChoice < 0 || productChoice >= products.length);
+
+        return productChoice;
+    }
 	
+
+	public static void addInventory(Product[] products, Scanner scanner) {
+		int productChoice, updateValue = -1;
+		
+		productChoice = getProductNumber(products, scanner);
+		
+		System.out.println("How many porducts do yuwnat to add: ");
+		scanner.nextInt();
+		
+		addToInventory(products, scanner);
 	
+		
+	} 
 }
+	
+	
